@@ -1,0 +1,45 @@
+task ('hello').doLast {
+    println "Hello World"
+}
+
+def echoParameter = { parameter ->
+    println parameter
+}
+
+def echoIt = {
+    println it
+}
+
+def echoReturnPrintln = { a,b ->
+    println a
+    println b
+}
+
+echoParameter "HelloWorld parameter"
+echoIt "HelloWorld it"
+echoReturnPrintln "HelloWorld a", "b"
+
+def oneArgMethod(closure){
+    closure() * 2
+}
+
+println oneArgMethod { 5 } // = 10 =oneArgMethod({5})
+
+//use for clojure iterators
+print "groovy iterators"
+for (int j in [1,2,3]){
+    println j
+}
+
+print "groovy clojure"
+[1,2,3].forEach{
+    println it
+}
+
+def executeInside(c){
+    c.delegate = this
+    c()
+}
+
+//logging
+logger.info "INFO LOGGING"
